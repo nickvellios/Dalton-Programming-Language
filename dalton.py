@@ -9,7 +9,10 @@ expressions and my curiousity grew and I began building out an interpreter
 for this made up language.  Nothing was planned ahead, and the code mostly
 reflects that.  It's very hacked together.  But hell, it works.  :)
 
-License:  None.  Do whatever you want with it.
+License
+----
+
+Unlicense.  For more information, please refer to http://unlicense.org/
 """
 
 variables = {}
