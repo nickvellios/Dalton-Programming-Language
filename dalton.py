@@ -120,7 +120,7 @@ class Stack:
 		self.jumpReturnOffset = None
 
 	def storeReturnOffset(self):
-		self.jumpReturnOffset = self.pos
+		self.jumpReturnOffset = self.pos - 1
 
 def enum(**enums):
     return type('Enum', (), enums)
@@ -240,7 +240,7 @@ def get_next_token():
 		tok = get_next_token()
 
 		while tok != tokens.TOK_ENDFUNCTION:
-		 	stack.advanceToNextline()
+		 	t = stack.advanceToNextline()
 			tok = get_next_token()
 		
 		return tokens.TOK_CR
@@ -507,8 +507,6 @@ def execute(code):
 			functionEnd = stack.advanceToNextline()
 			jumpStack[functionEnd] = stack.position()
 
-			continue
-
 		stack.step(1)
 
 	stack.jump(0)
@@ -540,7 +538,7 @@ def execute(code):
 				newForState.variable = variable
 				variables[variable] = expression()
 				tok = get_next_token()
-				tok = stepAdvanceGetToken(tok) # to value
+				tok = stepAdvanceGetToken(tok)
 				newForState.to = expression()
 				stack.advanceWhitespace()
 				newForState.startPos = stack.pos
@@ -583,18 +581,15 @@ def execute(code):
 				jumpLocation = stack.advanceToNextline()
 				stack.storeReturnOffset()
 				stack.jump(jumpStack[jumpLocation] - len(jumpLocation))
-				tok = get_next_token()
 
 			elif tok == tokens.TOK_GOTO:
 				stack.step(len(tokenStr[tok]))
 				stack.advanceWhitespace()
 				jumpLocation = stack.advanceToNextline()
 				stack.jump(jumpStack[jumpLocation] - len(jumpLocation))
-				tok = get_next_token()
 
 			elif tok == tokens.TOK_ENDFUNCTION:
 				stack.jumpReturn()
-				tok = get_next_token()
 
 			elif tok == tokens.TOK_PRINT:
 				stack.step(len(tokenStr[tok]))
