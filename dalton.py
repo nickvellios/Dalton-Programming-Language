@@ -134,8 +134,6 @@ tokens = enum(
 	TOK_LET = 6,
 	TOK_PRINT = 7,
 	TOK_IF = 8,
-	# TOK_THEN = 9,
-	# TOK_ELSE = 10,
 	TOK_FOR = 11,
 	TOK_TO = 12,
 	TOK_GOTO = 14,
@@ -278,7 +276,7 @@ def get_next_token():
 		return tokens.TOK_OR
 
 	if stack.char() == '^':
-			return tokens.TOK_XOR
+		return tokens.TOK_XOR
 
 	if stack.char() == '%':
 		return tokens.TOK_MOD
