@@ -1,0 +1,56 @@
+# Program to test the Dalton programming language
+
+print "Nested loops"
+for x = 0 to 5
+	for y = 0 to 5
+		print x + y
+	end
+end
+
+print "Breaking out of loops"
+for x = 0 to 5
+	if x > 2
+		break
+	eif
+	print x
+end
+
+# Jump to a code block location and continue
+# execution inline past the @end keyword.
+goto play
+
+# Example of a code block.  Not executed inline,
+# only if goto or call keywords are used.
+
+@printOddNumbers
+	for i = 1 to a
+		if i % 2 != 0
+			print i
+		eif
+	end
+@end
+
+@play
+	print "Please enter your name: "
+	input a
+	print "Hello " + a + ".  Please enter a number: "
+	input a
+
+	if a = 70
+		print "You picked the magic number!  Press any key to continue"
+		input x
+	eif
+
+	# Execute a code block and return to continue execution
+	# at the line after this one.
+
+	call printOddNumbers
+	print "Game over"
+@end
+
+print "Play again? (y/n)"
+input a
+if a = "y"
+	print "ok"
+	goto play
+eif
