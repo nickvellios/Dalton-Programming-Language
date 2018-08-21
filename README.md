@@ -14,7 +14,7 @@ reflects that.  It's very hacked together.  But hell, it works.  :)
 Scoped variables\
 Ability to return from a code block from inside another code block (call function inside of a code block executed from another call function).  Right now there is only one code block return stack offset saved.\
 Else statement\
-Maybe: Add support for variable types.  Surprisingly, the lack of types actually ends up being a bigger hassle.  You have to try to pattern the data in each variable prior to every operation and convert it to a format where you can operate on it.
+Maybe: Add support for variable types.  Surprisingly, the lack of types actually ends up being a bigger hassle so currently everything is a string cast to an integer for bitwise operations and floats for the rest (ugly).  You have to try to pattern the data in each variable prior to every operation and convert it to a format where you can operate on it.
 
 License
 ----
