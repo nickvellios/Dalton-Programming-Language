@@ -11,6 +11,7 @@ reflects that.  It's very hacked together.  But hell, it works.  :)
 
 **TODO:**
 
+Arrays\
 Scoped variables\
 Ability to return from a code block from inside another code block (call function inside of a code block executed from another call function).  Right now there is only one code block return stack offset saved.\
 Else statement\
